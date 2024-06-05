@@ -9,8 +9,12 @@ const API_KEY_TMDB = process.env.API_KEY_TMDB;
 
 router.get('/movies', (req, res) => {
 fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY_TMDB}`) // pourqoi il manquait le discover ?
-.then(response => response.json())
-.then(data => {  
+.then(response => {
+    console.log(response) 
+    return response.json()
+    })
+.then(data => {
+    console.log(data)  
     res.json({ movies: data.results }) // il manquait un s à result comment on trouve cette variable ?
 });
 });
